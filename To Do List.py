@@ -79,32 +79,24 @@ def main():
             
             choice = int(input("Enter your choice (1-8): "))
             
-            match choice:
-                case 1:
-                    tasks_description = input("Enter the task description: ")
-                    toDoList.addTask(tasks_description)
-                    break;
-                case 2:
-                    task_number = int(input("Enter the task number for mark as complete: ")) - 1
-                    toDoList.competeTask(task_number)
-                    break
-                case 3:
-                    toDoList.viewTask()
-                    break
-                case 4:
-                    task_numer = int(input("Enter the task number to remove: ")) - 1
-                    toDoList.removeTask(task_number)
-                    break
-                case 5:
-                    toDoList.saveFile()
-                    break
-                case 6:
-                    break
-                case 7:
-                    break
-                case 8:
-                    toDoList.saveFile()
-                    break
+            if choice == 1:
+                task_description = input("Enter task description: ")
+                toDoList.addTask(task_description)
+            elif choice == 2:
+                task_number = int(input("Enter the task number to mark as complete: ")) - 1
+                toDoList.completeTask(task_number)
+            elif choice == 3:
+                toDoList.viewTask()
+            elif choice == 4:
+                task_number = int(input("Enter the task number to remove: ")) - 1
+                toDoList.removeTask(task_number)
+            elif choice == 5:
+                toDoList.saveFile()
+            elif choice == 6:
+            elif choice == 7:
+            elif choice == 8:
+                toDoList.save_to_file()
+                break
 
          
     except Exception as e:
