@@ -47,7 +47,8 @@ class ToDoList:
             print(f"Your Task List Saved To {self.file}")
         
         except Exception as e:
-            print("\n", e, "\nPlease Fix It First")
+            print("\n", e, "\n ----------------YOUR TASK FILE CAN'T SAVE---------------------")
+            print("Please, try again")
             
     def loadTasks(self):
         if os.path.exists(self.fileName):
