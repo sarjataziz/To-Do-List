@@ -16,11 +16,11 @@ class ToDoList:
         
     def addTask(self, description):
         self.tasks.append(Task(description))
-        print("Your Task Is Added Successfully")
+        print("----------------Your Task Is Added Successfully-----------------")
     
     def completeTask(self, x):
         self.tasks[x].is_complete = True
-        print("Your Task Mark Is Done")
+        print("------------------Your Task Mark Is Done-------------------")
     
     def viewTask(self):
         self.tasks.sort(key = lambda x: (x.due_date is None, x.due_date))
@@ -29,15 +29,15 @@ class ToDoList:
             
     def removeTask(self, index):
         self.tasks.pop(index)
-        print("Your Task Has Been Removed Successfully!")
+        print("---------------Your Task Has Been Removed Successfully!-------------------")
     
     def addPriority(self, index, priority):
         self.tasks[index].priority = priority
-        print("Priority added to the task!")
+        print("-------------------Priority added to the task!------------------------")
         
     def addDueDate(self, index, deu_date):
         self.tasks[index].deu_date = deu_date
-        print("Due date added into the task")
+        print("---------------Due date added into the task--------------------")
         
     def saveFile(self):
         try:
@@ -48,14 +48,19 @@ class ToDoList:
         
         except Exception as e:
             print("\n", e, "\n ----------------YOUR TASK FILE CAN'T SAVE---------------------")
-            print("Please, try again")
+            print("----------------------Please, try again----------------------")
             
     def loadTasks(self):
-        if os.path.exists(self.fileName):
-            with open(self.fileName, 'r') as file:
-                for line in file:
-                    description, is_complete, due_date, priority = line.strip().split(',')
-                    self.tasks.append(Task(description, is_complete == 'True', due_date if due_date != 'None' else None, int(priority) if priority != 'None' else None))
+        try:
+            if os.path.exists(self.fileName):
+                with open(self.fileName, 'r') as file:
+                    for line in file:
+                        description, is_complete, due_date, priority = line.strip().split(',')
+                        self.tasks.append(Task(description, is_complete == 'True', due_date if due_date != 'None' else None, int(priority) if priority != 'None' else None))
+        except Exception as e:
+            print("\n", e, "\n ----------------YOUR TASK FILE CAN'T LOAD---------------------")
+            print("----------------Please, try again---------------------")
+                    
             
 def main():
     toDoList = ToDoList()
