@@ -92,8 +92,8 @@ def main():
                 toDoList.removeTask(task_number)
             elif choice == 5:
                 toDoList.saveFile()
-            elif choice == 6:
-            elif choice == 7:
+#             elif choice == 6:
+#             elif choice == 7:
             elif choice == 8:
                 toDoList.save_to_file()
                 break
