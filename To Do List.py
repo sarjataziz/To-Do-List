@@ -70,12 +70,13 @@ def main():
                       "------------------\n"
                       "1. Add a task\n"
                       "2. Complete a task\n"
-                      "3. View to-do list sorted by due date\n"
-                      "4. Remove a task\n"
-                      "5. Save the task list to file\n"
-                      "6. Add priority to task\n"
-                      "7. Add due date to task\n"
-                      "8. Exit\n")
+                      "3. View to-do list sorted by priority\n"
+                      "4. View to-do list sorted by due date\n"
+                      "5. Remove a task\n"
+                      "6. Save the task list to file\n"
+                      "7. Add priority to task\n"
+                      "8. Add due date to task\n"
+                      "9. Exit\n")
             
             choice = int(input("Enter your choice (1-8): "))
             
@@ -92,8 +93,15 @@ def main():
                 toDoList.removeTask(task_number)
             elif choice == 5:
                 toDoList.saveFile()
-#             elif choice == 6:
-#             elif choice == 7:
+            elif choice == 6:
+                task_number = int(input("Enter the task number to add priority: ")) - 1
+                print("1 -> Hard \n2 -> Medium \n3 -> Low")
+                priority = int(input("Enter the priority (1-3): "))
+                toDoList.addPriority(task_number, priority)
+            elif choice == 7:
+                task_number = int(input("Enter the task number to add a due date: ")) - 1
+                due_date = input("Enter the due date (YYYY-MM-DD): ")
+                toDoList.addDueDate(task_number, due_date)
             elif choice == 8:
                 toDoList.save_to_file()
                 break
